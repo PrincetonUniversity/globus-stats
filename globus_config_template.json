@@ -1,0 +1,67 @@
+################################################################
+# Copyright (C) 2017 Hyojoon Kim. Princeton University.
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with this
+# work for additional information regarding copyright ownership.  The ASF
+# licenses this file to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+# License for the specific language governing permissions and limitations
+# under the License.
+################################################################
+
+
+## All comments should start with "#" without any hitespace in front of it. ##
+
+
+#############################################################################
+# Explanation of Each Field
+#############################################################################
+#   * timezone
+#     - Your timezone string in "https://en.wikipedia.org/wiki/List_of_tz_database_time_zones"
+#   * client_id
+#     - The client ID number of the Globus app, which should be set as 
+#       administrators of the Globus endpoints you want to monitor
+#   * client_secret
+#     - Path to where 'client.secret' is located, which is the password of the Globus app
+#   * exclude_owner_id_list
+#     - List of ID numbers of the endpoints users that you want to exclude 
+#       when pulling usage data
+#   * interested_dtn_id_list
+#     - List of UUID numbers of the Globus endpoints you want to pull
+#       usage log about 
+#   * exclude_date_list_startstring
+#     - The list of dates you want to exclude when pulling usage log
+#############################################################################
+
+
+#############################################################################
+# Example Configuration
+#############################################################################
+#{
+#    "timezone": "America/New_York",    
+#    "client_id": "xxxxxxxx-xxxx-xx18-xxxx-x7xx5xc8e37x",
+#    "client_secret": "/home/globus/client.secret",
+#    "exclude_owner_id_list": ["xxxxxxxx-xxxx-xx18-xxxx-x7xx5xc8e37x", "xxxxxxxx-xxxx-xx18-xxxx-x7xx5xc8e371"],
+#    "interested_dtn_id_list": ["dabdce62-6d04-11e5-ba46-22000b92c6ec","d8eb36b6-6d04-11e5-ba46-22000b92c6ec"],
+#    "exclude_date_list_startstring" : ["2017-03-28"]
+#}   
+#############################################################################
+
+
+
+{
+    "timezone": "",
+    "client_id": "",
+    "client_secret": "",
+    "exclude_owner_id_list": ["","",""],
+    "interested_dtn_id_list": ["","",""],
+    "exclude_date_list_startstring" : [""]
+}   

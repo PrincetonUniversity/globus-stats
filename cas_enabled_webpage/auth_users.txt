@@ -1,0 +1,4 @@
+{   
+    "cas_url": "example.cas.address.edu",
+    "auth_users": "user1,user2,user3,user4"
+}
