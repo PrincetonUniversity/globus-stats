@@ -24,7 +24,7 @@ include_once('CAS.php');
 $data_location = "<DIRECTORY_WHERE_DATA_IS_LOCATED>";
 //example: $data_location = "/data/";
 
-$cas_users = file_get_contents($data_location . "auth_users.txt");
+$cas_users = file_get_contents($data_location . "auth_users.json");
 $json_data = json_decode($cas_users,true);
 
 $dtn_selections = file_get_contents($data_location . "dtn_selections.txt");
