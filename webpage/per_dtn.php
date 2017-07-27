@@ -175,7 +175,7 @@ include("vals.php");
                        'height':600};
         chart.draw(data, pie1_options);
 
-        // * Activity stats per taget DTN
+        // * Activity stats per target DTN
         // transform the CSV string into a 2-dimensional array
         var arrayData = $.csv.toArrays(response_array[4], {onParseValue: $.csv.hooks.castToScalar});
         // this new DataTable object holds all the data
@@ -268,7 +268,7 @@ include("vals.php");
         <div id="chart_div4" style="width: 33%; float: right;"> right </div>
     </div>
 
-    <h3> <b>Activity stats per taget DTN</b> </h3>
+    <h3> <b>Activity stats per target DTN</b> </h3>
     <div id="chart_div5"></div>
 
     <br>
