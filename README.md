@@ -10,7 +10,7 @@ This Python script (1) pulls transfer logs from Globus.org, and (2) plots variou
   
 ## Demo website
   - See how it looks, live! (https://globusstat.cpaneldev.princeton.edu/demo/index.php)
-  - Charts on user statistics are hidden for privacy, because it contains email addresses.
+  - Charts on user statistics are hidden for privacy, because they contain email addresses.
 
 ## Basic usage of the script itself
   - `python get_globus_data.py -c <GLOBUS_CONFIG_FILE> -o <OUTPUT_DIRECTORY> [-n]`
