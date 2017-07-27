@@ -25,3 +25,4 @@ This Python script (1) pulls transfer logs from Globus.org, and (2) plots variou
 
 ## Important Notes
   - NEVER upload `client.secret` file (`client.secret` is in `.gitignore` for safety.). Never hardcode client secret passcode in any code that can get uploaded to Github. 
+  - This work is licensed under the **GNU General Public License v3.0**. 
