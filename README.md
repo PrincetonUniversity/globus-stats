@@ -7,6 +7,10 @@ This Python script (1) pulls transfer logs from Globus.org, and (2) plots variou
   - Python libraries: Pytz and Goblus-python-sdk. 
   - Web server with PHP (tested with EasyApache PHP 5.6 with cPanel, ea-php56).
   - Please read [Wiki](https://github.com/PrincetonUniversity/globus-stats/wiki) for more information on installation and setup.
+  
+## Demo website
+  - See how it looks, live! (https://globusstat.cpaneldev.princeton.edu/demo/index.php)
+  - Charts on user statistics are hidden for privacy, because it contains email addresses.
 
 ## Basic usage of the script itself
   - `python get_globus_data.py -c <GLOBUS_CONFIG_FILE> -o <OUTPUT_DIRECTORY> [-n]`
