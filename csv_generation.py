@@ -190,7 +190,7 @@ def create_csv_users_by(xfers_per_endpoint_map, measurement_map_map, endpoint_id
 
 
 def create_csv_targets_by(xfers_per_endpoint_map, measurement_map_map, endpoint_id_to_name_map, \
-                          dtn_name_str, exclude_princeton, output_dir, gconfig, last_days=0,\
+                          dtn_name_str, exclude_admin_dtns, output_dir, gconfig, last_days=0,\
                           start_datetime=datetime.datetime.min+datetime.timedelta(days=1), end_datetime=datetime.datetime.max-datetime.timedelta(days=1)):
 
     # local use
@@ -224,7 +224,7 @@ def create_csv_targets_by(xfers_per_endpoint_map, measurement_map_map, endpoint_
             for idx in range(len(measurement_map_map[ep]['is_source'])):
 
                 target_dtn_id = measurement_map_map[ep]['target_dtn_id'][idx]
-                if exclude_princeton is True: 
+                if exclude_admin_dtns is True: 
                     if target_dtn_id in gconfig["interested_dtn_id_list"]:
                         continue
 
@@ -287,41 +287,6 @@ def create_csv_targets_by(xfers_per_endpoint_map, measurement_map_map, endpoint_
         fobj = open(output_dir + 'targets_' + dtn_uuid + '_' + str(last_days) + '_' + c + '.csv', 'w')
         fobj.write(csv_content_str_map[c])
         fobj.close()
-
-
-def create_csv_nonprinceton_targets(xfers_per_endpoint_map, measurement_map_map, endpoint_id_to_name_map, output_dir, gconfig):
-
-    # Non-Princeton target DTN : number_of_xfers
-    np_target_map_count = {}
-
-    # First line for CSV file
-    csv_content = 'DTN,Number of Transfers'
-
-    # For each endpoint,
-    for ep in xfers_per_endpoint_map:
-        if ep!='total':
-
-            # Go through all tasks
-            for idx in range(len(measurement_map_map[ep]['is_source'])):
-                target_dtn_id = measurement_map_map[ep]['target_dtn_id'][idx]
-                if target_dtn_id not in gconfig["interested_dtn_id_list"]:
-                    if np_target_map_count.has_key(endpoint_id_to_name_map[target_dtn_id]):
-                        np_target_map_count[endpoint_id_to_name_map[target_dtn_id]] += 1
-                    else:
-                        np_target_map_count[endpoint_id_to_name_map[target_dtn_id]] = 1
-
-    # Add line for each target endpoint. 
-    for ep in np_target_map_count:
-        dtn = ep
-        if ep==None:
-            dtn = 'Private endpoint'
-        csv_content += ('\n' + dtn + ',' + str(np_target_map_count[ep]))
-
-    # Save csv
-    fobj = open(output_dir + 'pie_nonp_targets.csv','w')
-    fobj.write(csv_content)
-    fobj.close()
-
 
 
 def create_csv_timeseries(xfers_per_endpoint_map, admin_endpoint_map, created_timeseries_list, output_dir, gconfig, last_days):
@@ -459,8 +424,8 @@ def create_csv_int_ext(xfers_per_endpoint_map, admin_endpoint_map, measurement_m
     # dtn-pair (set) : pair_data_map
     int_ext_count_map = {}
     int_ext_count_map["Unknown (Private endpoint)"] = 0
-    int_ext_count_map["Within Princeton"] = 0
-    int_ext_count_map["Princeton -- Outside"] = 0
+    int_ext_count_map["Within Campus"] = 0
+    int_ext_count_map["Campus -- Outside"] = 0
 
     # First line for CSV file
     csv_content = 'Within or inter,Total Size (GB)'
@@ -494,9 +459,9 @@ def create_csv_int_ext(xfers_per_endpoint_map, admin_endpoint_map, measurement_m
                     target_id = 'Private'
                     int_ext_count_map["Unknown (Private endpoint)"] += size_GB
                 elif target_id in gconfig["interested_dtn_id_list"]:
-                    int_ext_count_map["Within Princeton"] += size_GB
+                    int_ext_count_map["Within Campus"] += size_GB
                 else: 
-                    int_ext_count_map["Princeton -- Outside"] += size_GB
+                    int_ext_count_map["Campus -- Outside"] += size_GB
 
     # Now go through and create lines
     for type_xfer in int_ext_count_map:

@@ -150,7 +150,7 @@ if (isset($_REQUEST['logout'])) {
         var ts_options = {'title':'Number of tranfers per month','titleTextStyle': {fontSize:16}};
         chart.draw(data, ts_options);
 
-        // * Non-Princeton target endpoints
+        // * Non-administered target endpoints
         // transform the CSV string into a 2-dimensional array
         var arrayData = $.csv.toArrays(response_array[1], {onParseValue: $.csv.hooks.castToScalar});
         // this new DataTable object holds all the data
@@ -158,7 +158,7 @@ if (isset($_REQUEST['logout'])) {
         var chart = new google.visualization.PieChart(document.getElementById('chart_div2'));
 
         // Set chart options
-        var pie1_options = {'title':'Non-Princeton target endpoints',
+        var pie1_options = {'title':'Non-Campus target endpoints',
                        'width':600,'titleTextStyle': {fontSize:16},
                        'height':600};
         chart.draw(data, pie1_options);

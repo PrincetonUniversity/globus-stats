@@ -169,11 +169,11 @@ def create_csv(admin_endpoint_map, measurement_map_map, endpoint_id_to_name_map,
     csv_generation.create_csv_timeseries(xfers_per_endpoint_map, admin_endpoint_map, created_timeseries_list, output_dir, gconfig,last_days=365)
 
     for days in [0,30,60,90]:
-        # CSV file for piechart on *non-princeton* endpoint targets among all Princeton DTNs
+        # CSV file for piechart on endpoint targets that are not administered by you
         csv_generation.create_csv_targets_by(xfers_per_endpoint_map, measurement_map_map, endpoint_id_to_name_map, \
                           'all', True, output_dir, gconfig, last_days=days)
 
-        # CSV file for table of # transfer tasks, # files, dataset size. Each row will be a Princeton DTN
+        # CSV file for table of # transfer tasks, # files, dataset size. Each row will be a DTN
         csv_generation.create_csv_all_table(xfers_per_endpoint_map, admin_endpoint_map, measurement_map_map, \
                                             output_dir, gconfig, last_days=days)
     
