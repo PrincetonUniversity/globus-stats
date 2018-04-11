@@ -262,7 +262,12 @@ def get_globus_data(auth_token,transfer_token, gconfig):
     for ep in tc.endpoint_search(filter_scope="administered-by-me"):
         print("[{}] {}".format(ep["id"], ep["display_name"]))
         admin_endpoint_map[ep["id"]] = ep["display_name"]
-    
+        if ep["display_name"] is None:
+            if ep["canonical_name"] is not None:
+                admin_endpoint_map[ep["id"]] = ep["canonical_name"]
+            else: 
+                admin_endpoint_map[ep["id"]] = str(ep["id"])
+         
         # Filter DTNs that are not in the list of interested DTNs
         if ep["id"] not in gconfig["interested_dtn_id_list"]:
             continue

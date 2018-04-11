@@ -121,7 +121,7 @@ def create_csv_users_by(xfers_per_endpoint_map, measurement_map_map, endpoint_id
 
     # If no dtn in list_of_dtns, there is no data for that dtn.
     if len(list_of_dtns) == 0:
-        print 'Specified DTN (%s) does not exist'%(dtn_name_str)
+        print 'Specified DTN (%s) does not have usage data'%(dtn_name_str)
         return
 
     # For each endpoint,
@@ -213,7 +213,7 @@ def create_csv_targets_by(xfers_per_endpoint_map, measurement_map_map, endpoint_
 
     # If no dtn in list_of_dtns, there is no data for that dtn.
     if len(list_of_dtns) == 0:
-        print 'Specified DTN (%s) does not exist'%(dtn_name_str)
+        print 'Specified DTN (%s) does not has usage data'%(dtn_name_str)
         return
 
     # For each endpoint,
