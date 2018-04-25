@@ -87,7 +87,7 @@ if (isset($_REQUEST['logout'])) {
       function onSelectDateRange(value)
       {
         if (value=='All') {
-          drawChart('All', 0);
+          drawChart('All', 30);
         }
         else {
           drawChart('All', value);
@@ -120,7 +120,7 @@ if (isset($_REQUEST['logout'])) {
       }
 
       // Draw chart by dtn selection
-      function drawChart(dtn_name, last_days=0) {
+      function drawChart(dtn_name, last_days=30) {
 
         // Get DTN's UUID
         var dtn = JSON.parse('<?php echo $dtn_name_uuid; ?>');
@@ -225,7 +225,7 @@ if (isset($_REQUEST['logout'])) {
 
     <h3> Select date range:
     <select id="daterange" onchange="onSelectDateRange(this.value)">
-      <option value="All">All</option>
+<!--        <option value="All">All</option> --!>
       <option value="30">Last 30 days</option>
       <option value="60">Last 60 days</option>
       <option value="90">Last 90 days</option>
