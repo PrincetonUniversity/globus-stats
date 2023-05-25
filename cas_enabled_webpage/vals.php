@@ -19,7 +19,8 @@
 // phpCAS simple client
 //
 // import phpCAS lib
-include_once('CAS.php');
+//include_once('CAS.php');
+include_once('/usr/CAS/callCAS.php'); # Princeton OIT-specific CAS PHP
  
 $data_location = "<DIRECTORY_WHERE_DATA_IS_LOCATED>";
 //example: $data_location = "/data/";

@@ -20,19 +20,23 @@
 // phpCAS simple client
 //
 // import phpCAS lib
-include_once('CAS.php');
+//include_once('CAS.php');
+require_once('/usr/CAS/callCAS.php'); # Princeton OIT-specific CAS PHP
 include("vals.php");
  
 //phpCAS::setDebug();
  
+// Below phpCAS calls are not required 
+//  since OIT's callCAS.php (above) call them already
+
 // initialize phpCAS
-phpCAS::client(CAS_VERSION_2_0,$json_data['cas_url'],443,'cas');
+//phpCAS::client(CAS_VERSION_2_0,$json_data['cas_url'],443,'cas');
  
 // no SSL validation for the CAS server
-phpCAS::setNoCasServerValidation();
+//phpCAS::setNoCasServerValidation();
  
 // force CAS authentication
-phpCAS::forceAuthentication();
+//phpCAS::forceAuthentication();
  
 // at this step, the user has been authenticated by the CAS server
 // and the user's login name can be read with phpCAS::getUser().
