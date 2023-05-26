@@ -16,6 +16,7 @@
 //################################################################################
 
 include("vals.php");
+
 ?>
 
 <html>
@@ -42,7 +43,8 @@ include("vals.php");
       function onSelectDTN(value)
       {
         if (value != "All") { 
-          window.location.href = "./per_dtn.php?dtn_name="+value;
+          let encoded = encodeURIComponent(value)
+          window.location.href = "./per_dtn.php?dtn_name="+encoded;
         }
       }
 
@@ -50,7 +52,7 @@ include("vals.php");
       function onSelectDateRange(value)
       {
         if (value=='All') {
-          drawChart('All', 0);
+          drawChart('All', 7);
         }
         else {
           drawChart('All', value);
@@ -83,7 +85,7 @@ include("vals.php");
       }
 
       // Draw chart by dtn selection
-      function drawChart(dtn_name, last_days=0) {
+      function drawChart(dtn_name, last_days=7) {
 
         // Get DTN's UUID
         var dtn = JSON.parse('<?php echo $dtn_name_uuid; ?>');
@@ -192,7 +194,9 @@ include("vals.php");
 
     <h3> Select date range:
     <select id="daterange" onchange="onSelectDateRange(this.value)">
-      <option value="All">All</option>
+<!--        <option value="All">All</option> --!>
+      <option value="7">Last 7 days</option>
+      <option value="14">Last 14 days</option>
       <option value="30">Last 30 days</option>
       <option value="60">Last 60 days</option>
       <option value="90">Last 90 days</option>

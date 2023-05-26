@@ -16,8 +16,9 @@
 //################################################################################
 
 include("vals.php");
-?>
+ 
 
+?>
 
 <html>
   <head>
@@ -57,7 +58,7 @@ include("vals.php");
           var daterange_str = daterangeList.options[daterangeList.selectedIndex].value;
 
           if (daterange_str=='All') {
-            drawChart(value, '0');
+            drawChart(value, '7');
           }
           else {
             drawChart(value, daterange_str);
@@ -72,7 +73,7 @@ include("vals.php");
         var dtn_name_str = selDTNList.options[selDTNList.selectedIndex].value;
 
         if (value=='All') {
-          drawChart(dtn_name_str, 0);
+          drawChart(dtn_name_str, 7);
         }
         else {
           drawChart(dtn_name_str, value);
@@ -81,7 +82,7 @@ include("vals.php");
 
 
       // Draw chart by dtn selection
-      function drawChart(dtn_name,last_days=0) {
+      function drawChart(dtn_name,last_days=7) {
 
         var selectList =  document.getElementById("dtn_selections");
         if (selectList!=null & selectList.length==1) {
@@ -106,7 +107,7 @@ include("vals.php");
         // Get DTN's UUID
         var dtn = JSON.parse('<?php echo $dtn_name_uuid; ?>');
         if (dtn_name != "All") {
-          var dtn_uuid = dtn[decodeURI(dtn_name)];
+          var dtn_uuid = dtn[decodeURIComponent(dtn_name)];
         }
 //          console.log(dtn_uuid);
 
@@ -241,6 +242,10 @@ include("vals.php");
   </head>
 
   <body style="margin:10;padding:10">
+
+    <center><h1>Globus Usage Statistics</h1></center>
+    <!-- <center><h2>YOUR COMPANY NAME</h2></center> !-->
+
     <!--Div that will hold the pie chart-->
     <div id="chart_div1"></div>
 
@@ -252,7 +257,9 @@ include("vals.php");
 
     <h3> Select date range:
     <select id="daterange" onchange="onSelectDateRange(this.value)">
-      <option value="All">All</option>
+ <!--     <option value="All">All</option> --!>
+      <option value="7">Last 7 days</option>
+      <option value="14">Last 14 days</option>
       <option value="30">Last 30 days</option>
       <option value="60">Last 60 days</option>
       <option value="90">Last 90 days</option>

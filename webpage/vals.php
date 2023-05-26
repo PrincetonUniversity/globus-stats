@@ -15,12 +15,7 @@
 //# with this program.  If not, see <http://www.gnu.org/licenses/>.
 //################################################################################
 
-//
-// phpCAS simple client
-//
-// import phpCAS lib
-include_once('CAS.php');
- 
+
 $data_location = "<DIRECTORY_WHERE_DATA_IS_LOCATED>";
 //example: $data_location = "/data/";
 
