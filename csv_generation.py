@@ -271,10 +271,10 @@ def create_csv_targets_by(xfers_per_endpoint_map, measurement_map_map, endpoint_
         if ep==None:
             dtn = 'Private endpoint'
 
-        csv_content_xfers += ('\n' + dtn + ',' + str(target_map_count[ep]['num_xfers']))
-        csv_content_files += ('\n' + dtn + ',' + str(target_map_count[ep]['num_files']))
-        csv_content_sizes += ('\n' + dtn + ',' + '{0:.2f}'.format(target_map_count[ep]['transfer_size']))
-        csv_content_all += ('\n' + dtn + ',' + str(target_map_count[ep]['num_xfers'])+ ',' + str(target_map_count[ep]['num_files'])+ ',' + '{0:.2f}'.format(target_map_count[ep]['transfer_size']))
+        csv_content_xfers += ('\n"' + dtn + '",' + str(target_map_count[ep]['num_xfers']))
+        csv_content_files += ('\n"' + dtn + '",' + str(target_map_count[ep]['num_files']))
+        csv_content_sizes += ('\n"' + dtn + '",' + '{0:.2f}'.format(target_map_count[ep]['transfer_size']))
+        csv_content_all += ('\n"' + dtn + '",' + str(target_map_count[ep]['num_xfers'])+ ',' + str(target_map_count[ep]['num_files'])+ ',' + '{0:.2f}'.format(target_map_count[ep]['transfer_size']))
 
     csv_content_str_map = {}
     csv_content_str_map['num_xfers'] = csv_content_xfers
@@ -406,7 +406,7 @@ def create_csv_table_pair_activity(xfers_per_endpoint_map, admin_endpoint_map, m
         else: 
             dtn2_name = endpoint_id_to_name_map[pair[1]].encode('utf-8')
 
-        csv_line = ",".join([dtn1_name+' -- '+dtn2_name, str(pair_to_stat_map[pair]['total_transfers']), str(pair_to_stat_map[pair]['total_files']), '%.2f' % (pair_to_stat_map[pair]['total_size_GB'])])
+        csv_line = ",".join(['"'+dtn1_name+' -- '+dtn2_name+'"', str(pair_to_stat_map[pair]['total_transfers']), str(pair_to_stat_map[pair]['total_files']), '%.2f' % (pair_to_stat_map[pair]['total_size_GB'])])
 
         csv_content += ('\n' + csv_line)
 
