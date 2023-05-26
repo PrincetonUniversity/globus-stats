@@ -177,6 +177,10 @@ include("vals.php");
   </head>
 
   <body style="margin:10;padding:10">
+
+    <center><h1>Globus Usage Statistics</h1></center>
+    <!-- <center><h2>YOUR COMPANY NAME</h2></center> !-->
+
     <!--Div that will hold the pie chart-->
     <div id="chart_div1"></div>
 
